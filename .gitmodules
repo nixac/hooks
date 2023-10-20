@@ -1,0 +1,12 @@
+[submodule "lib/cmake-various"]
+	path = lib/cmake-various
+	url = https://codeberg.org/lilium/cmake-various.git
+	branch = master
+[submodule "lib/exec_u001"]
+	path = lib/exec_u001
+	url = https://codeberg.org/lilium/exec_u001.git
+	branch = master
+[submodule "lib/minhook"]
+	path = lib/minhook
+	url = https://github.com/TsudaKageyu/minhook.git
+	branch = master
