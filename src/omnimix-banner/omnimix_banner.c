@@ -1,4 +1,3 @@
-#include "defines.h"
 #include "iidx25.h"
 #include "iidx26.h"
 #include "iidx27.h"
@@ -19,7 +18,6 @@ static const ob_payload_t *const payloads_[] = {
 static const ob_payload_t *payload_;
 static ob_module_t avs2_;
 static ob_module_t bm2dx_;
-static rainbow_banner_t rainbow_banner;
 game_log_t game_log;
 
 const char *get_revision()
@@ -103,7 +101,7 @@ BOOL WINAPI DllMain(HMODULE module, DWORD reason, void *reserved)
             }
 
             bm2dx_.handle = GetModuleHandle("bm2dx.dll");
-            rainbow_banner = (rainbow_banner_t) (bm2dx_.base + payload_->banner_va);
+            rainbow_banner_t rainbow_banner = (rainbow_banner_t) (bm2dx_.base + payload_->banner_va);
             char *omni_string = ((char *) (bm2dx_.base + payload_->songdb_va));
             if (strcmp(omni_string, "music_data.bin") != 0 && strcmp(omni_string, "music_omni.bin") != 0)
             {

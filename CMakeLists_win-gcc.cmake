@@ -40,3 +40,7 @@ add_subdirectory(
 add_subdirectory(
         src/omnimix-banner
 )
+# omnimix clear/combo data
+add_subdirectory(
+        src/omnimix-dataloader
+)
