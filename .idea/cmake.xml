@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSharedSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Release_x86 [WIN32]" ENABLED="true" GENERATION_DIR="build/x86/Release/win_gcc" CONFIG_NAME="Release" TOOLCHAIN_NAME="MinGW [Crosscompile]" GENERATION_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=&quot;lib/cmake-various/toolchain/toolchain-mingw_nix-win-x86.cmake&quot;" NO_GENERATOR="true" />
+      <configuration PROFILE_NAME="Debug_x86 [WIN32]" ENABLED="true" GENERATION_DIR="build/x86/Debug/win_gcc" CONFIG_NAME="Debug" TOOLCHAIN_NAME="MinGW [Crosscompile]" GENERATION_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=&quot;lib/cmake-various/toolchain/toolchain-mingw_nix-win-x86.cmake&quot;" NO_GENERATOR="true" />
+      <configuration PROFILE_NAME="Debug_x64 [WIN32]" ENABLED="true" GENERATION_DIR="build/x64/Debug/win_gcc" CONFIG_NAME="Debug" TOOLCHAIN_NAME="MinGW [Crosscompile]" GENERATION_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=&quot;lib/cmake-various/toolchain/toolchain-mingw_nix-win-x64.cmake&quot;" NO_GENERATOR="true" />
+      <configuration PROFILE_NAME="Release_x64 [WIN32]" ENABLED="true" GENERATION_DIR="build/x64/Release/win_gcc" CONFIG_NAME="Release" TOOLCHAIN_NAME="MinGW [Crosscompile]" GENERATION_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=&quot;lib/cmake-various/toolchain/toolchain-mingw_nix-win-x64.cmake&quot;" NO_GENERATOR="true" />
+    </configurations>
+  </component>
+</project>

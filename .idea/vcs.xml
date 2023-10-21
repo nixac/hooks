@@ -2,8 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/lib/cmake-various" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/lib/exec_u001" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/lib/minhook" vcs="Git" />
   </component>
 </project>
