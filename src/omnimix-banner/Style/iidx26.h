@@ -44,7 +44,7 @@ static const ob_payload_t REV_20190902 = {
 };
 
 static const ob_payload_t REV_20191007 = {
-        .revision ="REV_20191007",
+        .revision ="20191007",
         .songdb_va = 0x53D785,
         .banner_va = 0x16E4F0,
         .song_by_id = (const uint16_t[]) {

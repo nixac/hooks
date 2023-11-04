@@ -1,6 +1,9 @@
 #include "iidx25.h"
 #include "iidx26.h"
 #include "iidx27.h"
+#include "iidx28.h"
+#include "iidx29.h"
+#include "iidx30.h"
 #include <MinHook.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -13,6 +16,10 @@ static const ob_payload_t *const payloads_[] = {
         &REV_20190902,
         &REV_20191007,
         &REV_20200929,
+        &REV_20210830,
+        &REV_20210915,
+        &REV_20220824,
+        &REV_20230905,
         NULL
 };
 static const ob_payload_t *payload_;
