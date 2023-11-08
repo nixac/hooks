@@ -6,6 +6,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <windows.h>
+#include <psapi.h>
 
 
 static const od_payload_t *const payloads_[] = {
@@ -23,6 +24,43 @@ static od_node_data_t *node_data_tail = 0;
 static read_node_data_s32_t read_node_data_s32;
 game_log_t game_log;
 
+HMODULE get_module(const char *name)
+{
+    HMODULE rv = NULL;
+
+    // Prioritize exact match
+    rv = GetModuleHandle(name);
+    if (rv) return rv;
+
+    // Find first .dll including specified name
+    HMODULE modules[1024];
+    DWORD cb_needed;
+    HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId());
+    if (EnumProcessModules(process, modules, sizeof(modules), &cb_needed))
+    {
+        const size_t needlelen = strlen(name) - 4;
+        char *needle = malloc(needlelen + 1);
+        memcpy(needle, name, needlelen);
+        needle[needlelen] = '\0';
+        for (unsigned int i = 0; i < (cb_needed / sizeof(HMODULE)); i++)
+        {
+            TCHAR szModName[MAX_PATH];
+            if (GetModuleBaseName(process, modules[i], szModName, sizeof(szModName) / sizeof(TCHAR)))
+            {
+                if (strstr(szModName, needle))
+                {
+                    log_msg(WARNING, "Loading %s as %s instead", szModName, name);
+                    rv = modules[i];
+                    break;
+                }
+            }
+        }
+        free(needle);
+    }
+    CloseHandle(process);
+
+    return rv;
+}
 const char *get_revision()
 {
     static char rv[9] = "";
@@ -176,7 +214,7 @@ BOOL WINAPI DllMain(HMODULE module, DWORD reason, void *reserved)
                 return false;
             }
 
-            bm2dx_.handle = GetModuleHandle("bm2dx.dll");
+            bm2dx_.handle = get_module("bm2dx.dll");
             read_node_data_s32 = (read_node_data_s32_t) (bm2dx_.base + payload_->node_data_va);
             get_clear_rate_t clear_rate = (get_clear_rate_t) (bm2dx_.base + payload_->clear_rate_va);
             get_fc_rate_t fc_rate = (get_fc_rate_t) (bm2dx_.base + payload_->fc_rate_va);
